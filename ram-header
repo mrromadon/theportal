@@ -1,0 +1,29 @@
+Cache-Control: no-cache
+Pragma: no-cache
+Content-type: text/html
+
+<html>
+    <head>
+        <link rel='icon' href='../R-icon.png' />
+        <META HTTP-EQUIV="Pragma"  CONTENT="no-cache">
+        <meta http-equiv="refresh" content="3600" />
+        <title>MRROMADONAPPS :: THIS IS MY RULES</title>    
+
+        <link href="../css/metro.css" rel="stylesheet">
+        <link href="../css/metro-icons.css" rel="stylesheet">
+        <link href="../css/metro-responsive.css" rel="stylesheet">
+        <link href="../css/metro-schemes.css" rel="stylesheet">
+        <link href="../css/docs.css" rel="stylesheet">  
+
+        <script src="../js/jquery-3.1.0.min.js"></script>
+		<script src="../js/jquery-1.12.4.js"></script>
+        <script src="../js/jquery.dataTables.min.js"></script>
+        <script src="../js/metro.js"></script>
+        <script src="../js/docs.js"></script>
+        <script src="../js/run_prettify.js"></script>
+        <script src="../js/ga.js"></script>                           
+
+        <style>       
+        </style>        
+    </head>
+    

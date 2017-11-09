@@ -1,0 +1,100 @@
+#!/bin/bash
+
+source /u2/data/LIB-SQLITE
+DATABASE="/u2/data/services.db"
+TABLE="services"
+
+
+######################################################### HTML SECTION #########################################################
+
+## HTML HEADER ##
+cat ram-header
+
+## HTML BODY ##
+cat ram-app_bar
+
+## HTML CONTAIN ##
+cat<<EndCat
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#example').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+        <div class="container page-content">
+            <div class="no-margin-left no-margin-right header text-light">List Services</div>  
+            <br>     
+
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+					<tr>                  
+						<th>NAME</th>
+						<th>SERVICE</th>
+						<th>DESCRIPTION</th>
+						<th>LINK</th>
+						<th>STATUS</th>
+					</tr>
+                </thead>
+        		<tfoot>
+					<tr>                  
+						<th>NAME</th>
+						<th>SERVICE</th>
+						<th>DESCRIPTION</th>
+						<th>LINK</th>
+						<th>STATUS</th>
+					</tr>
+				</tfoot>
+
+        
+                <tbody>
+EndCat
+
+IFS='|'
+SELECT-QUERY | while read NAME SERVICE DESCRIPTION LINK
+do
+    STATUS=""
+    STAT=$(systemctl status $NAME | grep Active:)
+    if [[ $STAT == *running* ]]
+    then
+        STATUS="Running"
+    elif [[ $STAT == *dead* ]]
+    then
+        STATUS="Stopped"
+    fi
+
+cat<<EndCat
+                    <tr>
+                        <td>$NAME</td>
+                        <td>$SERVICE</td>
+                        <td>$DESCRIPTION</td>
+                        <td><a href="http://$LINK" target="_blank">$LINK</td>                    
+                        <td>$STATUS</td>
+                    </tr>
+EndCat
+done
+
+cat<<EndCat
+                </tbody>
+            </table>
+
+EndCat
+
+## HTML FOOTER ##
+cat ram-footer

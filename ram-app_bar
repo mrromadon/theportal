@@ -1,0 +1,24 @@
+
+    <body>
+		<div class="app-bar bg-cobalt" data-role="appbar">
+        <ul class="app-bar-menu">
+            <li><a href="/app/"><span class="mif-earth mif-x"></span> Home</a></li>
+            <li><a href="ram-dashboard.cgi">Dashboard</a></li>
+            <li>
+                <a href="" class="dropdown-toggle">Monitoring</a>
+                <ul class="d-menu" data-role="dropdown">
+                    <li><a href="ram-smarthome.cgi">Smart Home</a></li>                    
+                </ul>
+            </li>
+            <li>
+                <a href="" class="dropdown-toggle">Services</a>
+                <ul class="d-menu" data-role="dropdown">
+                    <li><a href="ram-input.cgi">Input Services</a></li>
+                    <li><a href="ram-services.cgi">List Services</a></li>
+                    <li><a href="ram-delete.cgi">Remove Services</a></li>
+                    <li><a href="ram-iptables.cgi">Iptables</a></li>
+                </ul>
+            </li>
+        </ul>
+        <u1 class="app-bar-menu place-right"></u1>
+    </div>
